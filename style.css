@@ -1,0 +1,202 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f4f4f8;
+  color: #222;
+}
+
+.app-container {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.app-header h1 {
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+.subtitle {
+  margin: 0.25rem 0 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+main {
+  flex: 1;
+}
+
+h2 {
+  font-size: 1.3rem;
+  margin-top: 0;
+  text-align: center;
+}
+
+.buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.recipe-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 16px;
+  padding: 0.9rem 0.4rem;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.08s ease;
+}
+
+.recipe-button:active {
+  transform: scale(0.98);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  background: #f0f0ff;
+}
+
+.recipe-button .emoji {
+  font-size: 1.8rem;
+  margin-bottom: 0.3rem;
+}
+
+.recipe-button .label {
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Pantalla calculadora */
+
+.hidden {
+  display: none;
+}
+
+.back-button {
+  border: none;
+  background: transparent;
+  color: #0066cc;
+  font-size: 0.95rem;
+  padding: 0;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  text-decoration: underline;
+}
+
+.input-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1rem;
+}
+
+.input-card label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+#kgInput {
+  flex: 1;
+  padding: 0.5rem 0.6rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.kg-label {
+  font-size: 0.95rem;
+  color: #333;
+  background: #f0f0f5;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+}
+
+.hint {
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.results-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.results-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  font-size: 1.1rem;
+}
+
+#results-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 0.6rem;
+  font-size: 0.9rem;
+}
+
+#results-table th,
+#results-table td {
+  padding: 0.4rem 0.3rem;
+  border-bottom: 1px solid #eee;
+}
+
+#results-table th {
+  text-align: left;
+  font-weight: 600;
+}
+
+#results-table td:last-child {
+  text-align: right;
+}
+
+.cook-time {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #444;
+  font-style: italic;
+}
+
+.app-footer {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #777;
+}
+
+/* Millores per a pantalles petites */
+
+@media (max-width: 360px) {
+  .buttons-grid {
+    grid-template-columns: 1fr;
+  }
+}

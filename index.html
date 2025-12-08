@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espècies per embotits</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Pantalla d'inici -->
+    <header class="app-header">
+      <h1>Espècies per a embotits</h1>
+      <p class="subtitle">Calculadora per a matances</p>
+    </header>
+
+    <main>
+      <section id="home-screen">
+        <h2>Tria l’embotit</h2>
+        <div class="buttons-grid">
+          <button class="recipe-button" data-recipe="sobrassada-dolca">
+            <span class="emoji">🌶️</span>
+            <span class="label">Sobrassada dolça</span>
+          </button>
+
+          <button class="recipe-button" data-recipe="sobrassada-coenta">
+            <span class="emoji">🔥</span>
+            <span class="label">Sobrassada coenta</span>
+          </button>
+
+          <button class="recipe-button" data-recipe="botifarrons">
+            <span class="emoji">🌭</span>
+            <span class="label">Botifarrons</span>
+          </button>
+
+          <button class="recipe-button" data-recipe="camaiot">
+            <span class="emoji">🍖</span>
+            <span class="label">Camaiot</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Pantalla de càlcul -->
+      <section id="calculator-screen" class="hidden">
+        <button id="back-button" class="back-button">← Tornar a l’inici</button>
+        <h2 id="recipe-title">Embotit</h2>
+
+        <div class="input-card">
+          <label for="kgInput">Quilograms de massa:</label>
+          <div class="input-row">
+            <input
+              type="number"
+              id="kgInput"
+              min="0"
+              step="0.1"
+              placeholder="Introdueix els kg"
+            >
+            <span class="kg-label">kg</span>
+          </div>
+          <p class="hint">Pots modificar els kg i les quantitats es recalcularan automàticament.</p>
+        </div>
+
+        <div id="results-card" class="results-card">
+          <h3 id="results-title">Resultat</h3>
+          <table id="results-table">
+            <thead>
+              <tr>
+                <th>Ingredient</th>
+                <th>Quantitat (g)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Files generades amb JavaScript -->
+            </tbody>
+          </table>
+          <p id="cook-time" class="cook-time"></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <small>Calculadora basada en les fórmules de les matances familiars</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
