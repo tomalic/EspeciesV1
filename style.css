@@ -22,7 +22,6 @@ body {
   flex-direction: column;
   padding: 1rem;
 
-  /* Caixa blanca semitransparenta per sobre la tela */
   background: rgba(255, 255, 255, 0.9);
   border-radius: 16px 16px 0 0;
 }
@@ -62,7 +61,7 @@ h2 {
   margin-top: 1rem;
 }
 
-/* Botons amb imatge de l'embotit */
+/* Botons amb imatge */
 .recipe-button {
   display: flex;
   flex-direction: column;
@@ -208,8 +207,6 @@ h2 {
   font-size: 0.75rem;
   color: #555;
 }
-
-/* Millores per a pantalles petites */
 
 @media (max-width: 360px) {
   .buttons-grid {

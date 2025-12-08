@@ -1,10 +1,8 @@
-// Receptes (g d'espècia per kg de massa)
-// Ajusta els valors segons el teu full de càlcul original
 const recipes = {
   "sobrasada-dolca": {
     name: "Sobrassada dolça",
     spices: {
-      "Pebre vermell dolç": 50,  // g/kg
+      "Pebre vermell dolç": 50,
       "Pebre coent": 3,
       "Sal": 25,
       "Conservant": 2
@@ -28,7 +26,7 @@ const recipes = {
       "Sal": 25,
       "Pebre bo": 7
     },
-    cookTime: 20  // minuts, si ho vols indicar
+    cookTime: 20
   },
   "camaiot": {
     name: "Camaiot",
@@ -37,13 +35,12 @@ const recipes = {
       "Sal": 25,
       "Pebre bo": 7
     },
-    cookTime: 180 // 3 hores
+    cookTime: 180
   }
 };
 
 let currentRecipeKey = null;
 
-// Elements del DOM
 const homeScreen = document.getElementById("home-screen");
 const calculatorScreen = document.getElementById("calculator-screen");
 const recipeTitle = document.getElementById("recipe-title");
@@ -53,7 +50,6 @@ const resultsTableBody = document.querySelector("#results-table tbody");
 const cookTimeP = document.getElementById("cook-time");
 const backButton = document.getElementById("back-button");
 
-// Mostrar pantalla calculadora
 function openCalculator(recipeKey) {
   currentRecipeKey = recipeKey;
   const recipe = recipes[recipeKey];
@@ -61,7 +57,6 @@ function openCalculator(recipeKey) {
   recipeTitle.textContent = recipe.name;
   resultsTitle.textContent = `Quantitats d'espècies`;
 
-  // Valor per defecte (p. ex. 10 kg)
   kgInput.value = 10;
 
   updateResults();
@@ -70,14 +65,12 @@ function openCalculator(recipeKey) {
   calculatorScreen.classList.remove("hidden");
 }
 
-// Tornar a l'inici
 function goHome() {
   calculatorScreen.classList.add("hidden");
   homeScreen.classList.remove("hidden");
   currentRecipeKey = null;
 }
 
-// Recalcular resultats
 function updateResults() {
   if (!currentRecipeKey) return;
 
@@ -91,7 +84,6 @@ function updateResults() {
     return;
   }
 
-  // Crear files de la taula
   Object.entries(recipe.spices).forEach(([name, gramsPerKg]) => {
     const totalGrams = gramsPerKg * kg;
     const row = document.createElement("tr");
@@ -107,7 +99,6 @@ function updateResults() {
     resultsTableBody.appendChild(row);
   });
 
-  // Temps de cocció, si existeix
   if (recipe.cookTime && recipe.cookTime > 0) {
     cookTimeP.textContent =
       `Temps de cocció recomanat: ${recipe.cookTime} minuts aproximadament.`;
@@ -116,7 +107,6 @@ function updateResults() {
   }
 }
 
-// Events
 document.querySelectorAll(".recipe-button").forEach((btn) => {
   btn.addEventListener("click", () => {
     const recipeKey = btn.getAttribute("data-recipe");
