@@ -13,37 +13,38 @@
       <p class="subtitle">Valors en grams per kg (g/kg)</p>
     </header>
 
-   <main>
-  <div class="config-panel">
+    <main>
+      <div class="config-panel">
 
-    <label>Embotit
-      <select id="recipeSelect">
-        <option value="sobrasada-dolca">Sobrassada dolça</option>
-        <option value="sobrasada-coenta">Sobrassada coenta</option>
-        <option value="botifarrons">Botifarrons</option>
-        <option value="camaiot">Camaiot</option>
-      </select>
-    </label>
+        <label>Embotit
+          <select id="recipeSelect">
+            <option value="sobrasada-dolca">Sobrassada dolça</option>
+            <option value="sobrasada-coenta">Sobrassada coenta</option>
+            <option value="botifarrons">Botifarrons</option>
+            <option value="camaiot">Camaiot</option>
+          </select>
+        </label>
 
-    <div id="fieldsContainer"></div>
+        <div id="fieldsContainer"></div>
 
-    <div class="config-actions">
-      <button id="saveConfig" class="config-btn">Desar</button>
-      <button id="clearConfig" class="config-btn">Esborrar</button>
-    </div>
+        <div class="config-actions">
+          <button id="saveConfig" class="config-btn">Desar</button>
+          <button id="clearConfig" class="config-btn">Esborrar</button>
+        </div>
 
-  </div>
-</main>
+      </div>
+
+      <!-- ✅ BOTÓ TORNAR (ara va dins el flux, abans del footer) -->
+      <div class="bottom-panel">
+        <button id="backConfig" class="config-btn">← Tornar</button>
+      </div>
+    </main>
 
     <footer class="app-footer">
       <small>© Tomeu Mas</small>
     </footer>
   </div>
 
-  <div class="bottom-panel">
-  <button id="backConfig" class="config-btn">← Tornar</button>
-</div>
-<script src="config.js"></script>
+  <script src="config.js"></script>
 </body>
 </html>
-
