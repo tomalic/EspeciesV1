@@ -67,14 +67,12 @@ function openCalculator(recipeKey) {
 
   homeScreen.classList.add("hidden");
   calculatorScreen.classList.remove("hidden");
-  if (bottomPanel) bottomPanel.classList.add("hidden");
 }
 
 function goHome() {
   calculatorScreen.classList.add("hidden");
   homeScreen.classList.remove("hidden");
   currentRecipeKey = null;
-  if (bottomPanel) bottomPanel.classList.remove("hidden");
 }
 
 function updateResults() {
