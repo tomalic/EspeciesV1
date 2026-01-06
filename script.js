@@ -43,7 +43,7 @@ const recipes = {
 
 
 let currentRecipeKey = null;
-
+const CONFIG_KEY = "matances_config_by_recipe";
 const homeScreen = document.getElementById("home-screen");
 const calculatorScreen = document.getElementById("calculator-screen");
 const bottomPanel = document.querySelector(".bottom-panel");
@@ -75,7 +75,6 @@ function goHome() {
   homeScreen.classList.remove("hidden");
   currentRecipeKey = null;
   if (bottomPanel) bottomPanel.classList.remove("hidden");
-
 }
 
 function updateResults() {
@@ -152,7 +151,6 @@ document.querySelectorAll(".recipe-button").forEach((btn) => {
 
 backButton.addEventListener("click", goHome);
 kgInput.addEventListener("input", updateResults);
-const CONFIG_KEY = "matances_config_by_recipe";
 const configBtn = document.getElementById("configBtn");
 
 if (configBtn) {
