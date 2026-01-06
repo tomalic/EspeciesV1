@@ -1,43 +1,46 @@
+// Estructura pública (sense fórmules)
 const recipes = {
   "sobrasada-dolca": {
     name: "Sobrassada dolça",
     spices: {
-      "Pebre vermell dolç": 50,
-      "Pebre coent": 3,
-      "Sal": 25,
-      "Conservant": 2
+      "Sal": 0,
+      "Pebre vermell dolç": 0,
+      "Pebre coent": 0,
+      "Conservant": 0
     },
     cookTime: null
   },
   "sobrasada-coenta": {
     name: "Sobrassada coenta",
     spices: {
-      "Pebre vermell dolç": 30,
-      "Pebre coent": 20,
-      "Sal": 25,
-      "Conservant": 2
+      "Sal": 0,
+      "Pebre vermell dolç": 0,
+      "Pebre coent": 0,
+      "Conservant": 0
     },
     cookTime: null
   },
   "botifarrons": {
     name: "Botifarrons",
     spices: {
-      "Pebre coent": 4,
-      "Sal": 25,
-      "Pebre bo": 7
+      "Sal": 0,
+      "Pebre bo": 0,
+      "Pebre coent": 0,
+      "Llavors": 0
     },
-    cookTime: 20
+    cookTime: 0
   },
   "camaiot": {
     name: "Camaiot",
     spices: {
-      "Pebre coent": 4,
-      "Sal": 25,
-      "Pebre bo": 7
+      "Sal": 0,
+      "Pebre bo": 0,
+      "Pebre coent": 0
     },
-    cookTime: 180
+    cookTime: 0
   }
 };
+
 
 let currentRecipeKey = null;
 
@@ -77,25 +80,33 @@ function updateResults() {
   const recipe = recipes[currentRecipeKey];
   const kg = parseFloat(String(kgInput.value).replace(",", "."));
     // === Configuració per embotit (opcional) ===
-  const allCfg = JSON.parse(localStorage.getItem(CONFIG_KEY) || "{}");
-  const cfg = allCfg[currentRecipeKey] || {};
+   const allCfg = JSON.parse(localStorage.getItem(CONFIG_KEY) || "{}");
+  const cfg = allCfg[currentRecipeKey]; // IMPORTANT: sense || {}
 
-  // Copiam espècies base
-  const finalSpices = { ...(recipe.spices || {}) };
+  // Si no hi ha cap configuració guardada per aquest embotit,
+  // mostra totes les espècies a 0 (en lloc dels valors base)
+  let finalSpices = {};
+  if (!cfg) {
+    Object.keys(recipe.spices || {}).forEach((name) => {
+      finalSpices[name] = 0;
+    });
+  } else {
+    // Hi ha configuració: partim de les espècies base i apliquem overrides
+    finalSpices = { ...(recipe.spices || {}) };
 
-  // Si hi ha valors definits a configuració, sobreescriu / afegeix
-  Object.entries(cfg).forEach(([k, v]) => {
-    if (k === "__cookTime") return;
-    if (typeof v === "number" && !isNaN(v)) {
-      finalSpices[k] = v; // grams per kg
-    }
-  });
+    Object.entries(cfg).forEach(([k, v]) => {
+      if (k === "__cookTime") return;
+      if (typeof v === "number" && !isNaN(v)) {
+        finalSpices[k] = v; // grams per kg
+      }
+    });
+  }
 
   // Temps de cocció: si hi ha config, té prioritat
-  const finalCookTime =
-    (typeof cfg.__cookTime === "number" && !isNaN(cfg.__cookTime) && cfg.__cookTime > 0)
+    const finalCookTime =
+    (cfg && typeof cfg.__cookTime === "number" && !isNaN(cfg.__cookTime) && cfg.__cookTime > 0)
       ? cfg.__cookTime
-      : recipe.cookTime;
+      : (cfg ? recipe.cookTime : null);
 
 
   resultsTableBody.innerHTML = "";
